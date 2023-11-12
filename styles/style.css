@@ -12,9 +12,9 @@ html {
   display: flex;
   inline-size: 1200px;
   block-size: 100%;
-  margin: auto;
+  margin: 133px auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', 'Arial', sans-serif;
+  font-family: "Fira Sans Condensed", "Arial", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
 }
@@ -42,22 +42,20 @@ ol {
   box-sizing: content-box;
   display: flex;
   flex-direction: row;
-  padding: 133px 30px;
   inline-size: 1140px;
-  block-size: 534px;
+  block-size: fit-content;
   column-gap: 30px;
 }
 
 .content__details {
   display: flex;
   flex-direction: column;
-  justify-content: end;
   row-gap: 26px;
   inline-size: 100%;
   block-size: 100%;
 }
 
-.result{
+.result {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -72,8 +70,9 @@ ol {
 }
 
 .result__video {
-  inline-size: 100%;
-  block-size: 105%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .search-form {
@@ -81,13 +80,13 @@ ol {
   flex-direction: row;
   justify-content: space-between;
   align-items: end;
-  inline-size: 711px;
-  block-size: 54px;
+  inline-size: auto;
+  block-size: auto;
   column-gap: 40px;
 }
 
 .search-form__fieldset-title {
-  color: #FFF;
+  color: #fff;
   font-family: Fira Sans Condensed, sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -102,10 +101,12 @@ ol {
 .search-form__label {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: fit-content;
+  cursor: pointer;
 }
 
-.search-form__label + .search-form__label{
+.search-form__label + .search-form__label {
   margin-inline-start: 15px;
 }
 
@@ -121,20 +122,25 @@ ol {
 .search-form__textfield {
   border: none;
   background-color: transparent;
-  inline-size: 225px;
-  block-size: 27px;
-  color: rgba(255, 255, 255, 0.70);
-  font-family: Fira Sans Condensed;
+  min-inline-size: 225px;
+  min-block-size: 27px;
+  color: rgb(255, 255, 255);
+  font-family: Fira Sans Condensed, Arial, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  border-top: 1px solid #FFF;
-  border-bottom: 1px solid #FFF;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
   appearance: none;
 }
 
-.search-form__checkbox-list { border: none;
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__checkbox-list {
+  border: none;
   display: flex;
   flex-direction: row;
   margin-block-start: 5px;
@@ -150,35 +156,45 @@ ol {
 }
 
 .search-form__checkbox:checked ~ .search-form__pseudo-checkbox {
-  display: inline-block;
+  display: block;
   position: relative;
 }
 
 .search-form__checkbox:checked ~ .search-form__pseudo-checkbox::after {
   content: "";
   position: absolute;
+  inset: 0 0;
   inline-size: 15px;
   block-size: 15px;
   background-color: #fff;
 }
 
- .search-form__label:hover .search-form__label-text {
+.search-form__label:hover .search-form__label-text {
   text-decoration: underline;
- }
+}
 
 .button {
   background-color: transparent;
   inline-size: 100%;
-  block-size: 34px;
-  border: 1px solid #FFF;
-  color: #FFF;
+  min-block-size: 34px;
+  border: 1px solid currentColor;
+  color: #fff;
   text-align: center;
-  font-family: Fira Sans Condensed;
+  font-family: Fira Sans Condensed, Arial, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
 
 .button:hover {
@@ -190,8 +206,8 @@ ol {
 }
 
 .title {
-  color: #FFF;
-  font-family: Oswald;
+  color: #fff;
+  font-family: Oswald, Arial, sans-serif;
   font-size: 75px;
   font-style: normal;
   font-weight: 700;
@@ -201,12 +217,6 @@ ol {
 
 .content__accent {
   color: #545050;
-  font-family: Oswald;
-  font-size: 75px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 94%; /* 70.5px */
-  text-transform: uppercase;
 }
 
 .content__list {
@@ -215,23 +225,19 @@ ol {
   row-gap: 30px;
   inline-size: 399px;
   block-size: 298px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .content__list-item {
-  inline-size: 392px;
-  block-size: 108px;
+  inline-size: 399px;
+  block-size: fit-content;
 }
 
-.content__list-item:hover {
+.content__card-link:hover {
   text-decoration: underline;
+  color: #fff;
   cursor: pointer;
-}
-
-.content__list-item:has(:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
 }
 
 .content__card-link {
@@ -240,14 +246,27 @@ ol {
   margin: 2px;
 }
 
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.content__card-link:active {
+  background-color: #545050;
+}
+
 .content__card-link_current {
   background-color: #545050;
 }
 
 .content__video-card {
   display: flex;
-  inline-size: 390px;
-  block-size: 103px;
+  inline-size: 399px;
+  block-size: fit-content;
 }
 
 .content__video-card-description-container {
@@ -255,34 +274,38 @@ ol {
   block-size: 100%;
 }
 
-.content__video-card-description-container:active {
-  background-color:  #545050;
-}
-
 .content__video-card-title {
+  max-inline-size: 200px;
   margin-block-end: 6px;
-  color: #FFF;
-  font-family: Oswald;
+  color: #fff;
+  font-family: Oswald, Arial, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
   line-height: 100%; /* 30px */
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-description {
-  color: #FFF;
-  font-family: Fira Sans Condensed;
+  max-inline-size: 200px;
+  color: #fff;
+  font-family: Fira Sans Condensed, Arial, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 16.2px; /* 90% */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-thumbnail {
-  inline-size: 194px;
-  block-size: 103px;
-
+  width: 194px;
+  height: 103px;
+  object-fit: contain;
 }
 
 .visually-hidden {
@@ -294,4 +317,3 @@ ol {
   clip-path: inset(50%);
   white-space: nowrap;
 }
-
